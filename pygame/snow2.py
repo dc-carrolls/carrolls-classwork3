@@ -8,14 +8,31 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
  
 
+class House:
+  def __init__(self):
+    self.y = 440
+    self.x = 100
+    self.colour = RED
+    self.height = 100
+    self.width = 200
+  #end procedure
+
+  def update(self):
+    pass
+
+  def draw(self):
+      pygame.draw.rect(screen, self.colour, [self.x,self.y,self.height,self.width])
+  #end procdure
+#end class
+
 
 class Snow:
-  def __init__(self):
-    self.y = 0
-    self.x = 100
+  def __init__(self,height,width):
+    self.y = random.randint(0,490)
+    self.x = random.randint(10,680)
     self.colour = WHITE
-    self.height = 10
-    self.width = 10
+    self.height = height
+    self.width = width
   #end procedure
 
   def update(self):
@@ -43,9 +60,12 @@ pygame.display.set_caption("My Game")
  
 # Loop until the user clicks the close button.
 done = False
-snow1 = Snow()
-snow1.x = random.randint(10,680)
-snow1.y = 0
+sprites = []
+sprites.append(House())
+for n in range(50):
+  sprites.append(Snow(10,10))
+
+
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
@@ -58,7 +78,8 @@ while not done:
             done = True
  
     # --- Game logic should go here
-    snow1.update()
+    for sprite in sprites:
+      sprite.update()
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
@@ -69,7 +90,8 @@ while not done:
     screen.fill(BLACK)
  
     # --- Drawing code should go here
-    snow1.draw()
+    for sprite in sprites:
+      sprite.draw()
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
