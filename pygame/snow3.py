@@ -27,29 +27,28 @@ class House:
 #end class
 
 
-class Snow:
-  def __init__(self,height,width):
-    self.y = random.randint(0,490)
-    self.x = random.randint(10,680)
-    self.colour = WHITE
-    self.height = height
-    self.width = width
-  #end procedure
+
+## -- Define the class snow which is a sprite 
+class Snow(pygame.sprite.Sprite): 
+# Define the constructor for snow 
+  def __init__(self, color, width, height): 
+  # Call the sprite constructor 
+    super().__init__() 
+    # Create a sprite and fill it with colour 
+    self.image = pygame.Surface([width,height]) 
+    self.image.fill(color) 
+    # Set the position of the sprite 
+    self.rect = self.image.get_rect() 
+    self.rect.x = random.randrange(0, 700) 
+    self.rect.y = random.randrange(0, 500) 
+  #End Procedure
 
   def update(self):
-    if self.y > 500:
-      self.x = random.randint(0,700)
-      self.y = 0
-    else:
-      self.y = self.y + 1
-    #endif
-  #end procedure
+    
+#End Class
 
 
-  def draw(self):
-      pygame.draw.rect(screen, self.colour, [self.x,self.y,10,10])
-  #end procdure
-#end class
+
 
 pygame.init()
  
@@ -62,18 +61,9 @@ pygame.display.set_caption("My Game")
 # Loop until the user clicks the close button.
 done = False
 sprites = []
-myHouse1 = House()
-myHouse2 = House()
-print(myHouse1.age)
-print(myHouse2.age)
-
-House().age = 50
 
 
-print(myHouse1.age)
-print(myHouse2.age)
-
-sprites.append(myHouse1)
+sprites.append(House())
 for n in range(50):
   sprites.append(Snow(10,10))
 
