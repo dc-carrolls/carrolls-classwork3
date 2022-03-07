@@ -6,7 +6,7 @@ TASK: ride
 
 import pathlib
 
-fin = open (pathlib.Path(__file__).parent.resolve()) / 'ride.in', 'r')
+fin = open (pathlib.Path(__file__).parent.resolve() / 'ride.in', 'r')
 fout = open (pathlib.Path(__file__).parent.resolve() / 'ride.out', 'w')
 
 comet = fin.readline().strip()
