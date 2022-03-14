@@ -5,45 +5,56 @@ TASK: beads
 """
 
 import pathlib
-from re import L
 
 fin = open (pathlib.Path(__file__).parent.resolve() / 'beads.in', 'r')
 fout = open (pathlib.Path(__file__).parent.resolve() / 'beads.out', 'w')
 
-n = int(fin.readline().strip())
-nl = fin.readline().strip()
+bNum = int(fin.readline())
+beads = fin.readline().strip()
 
+pre = ppre = ''
+i=0
+cnt = wcnt = 0
+bMax = left = 0
+isSecond=False
+while True:
+	if beads[i] != pre:
+		if beads[i] == 'w':
+			wcnt=1
+		else:
+			if beads[i] == ppre:
+				cnt=cnt+wcnt+1
+				wcnt=0
+			else:
+				ppre=beads[i]
+				if left+cnt+wcnt>bMax:
+					bMax=left+cnt+wcnt
+				if isSecond:
+					break
 
-cc=nl[0]
-if cc == 'w':
-  cc='b'
-sp=0
-np=0
-ep=1
-l = ep-sp
-lmax=l
-while sp < n and (ep-sp) < n:
-  c = nl[ep%n] 
-  if c=='w':
-    c=cc 
-  if (c==cc) or (c=='w'): 
-    l=ep-sp
-    if l > lmax:
-      lmax = l
-    #  print('max:',lmax,'sp:',sp,'ep:',ep)
-    #end if
-  else:
-    cc=c
-    sp=np
-    np=ep
-  #end if
-  ep+=1
-#end while
-print(n)
-print(nl)
-print('start:',sp,'end:',ep)
-print(lmax)
+				left=cnt
 
-fout.write ('STAY\n')
+				if pre == 'w':
+					cnt=wcnt+1
+					wcnt=0
+				else:
+					cnt=1
+
+		pre=beads[i]
+	else:           
+		if beads[i] == 'w':
+			wcnt+=1
+		else:
+			cnt+=1
+	i+=1   
+	if i==bNum:
+		if (cnt+wcnt) == (bNum*2):
+			bMax=bNum
+			break
+		i=0
+		isSecond=True
+
+fout.write(f"{bMax}\n")
+
 fout.close()
 fin.close()
