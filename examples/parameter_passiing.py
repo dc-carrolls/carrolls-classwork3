@@ -18,3 +18,13 @@ def change_to_green2(colour):
 
 change_to_green2(RED)
 print(RED)
+
+ref_args={'x':5}
+
+def add_one(ref_params):
+  ref_params['x']+=1
+  return ref_params['x']
+
+print(ref_args['x'])
+print(add_one(ref_args))
+print(ref_args['x'])
