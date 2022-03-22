@@ -2,12 +2,14 @@ f = open('.\Alan-Turing\c6inputb.txt','r',newline='')
 
 
 
-output=""
+output={}
 count=0
 for line in f:
-  for c in line.strip():
-    if c != "0":
-      output += c
+  for c in line:
+    if c in output:
+      output[c] += 1
+    else:
+      output[c] = 1
     #end if
   #next code
 #next string
