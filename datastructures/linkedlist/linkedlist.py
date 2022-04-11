@@ -1,27 +1,26 @@
 'SRC1 - linked list module'
-from typing import Container
-
-
-class Node:
-  'Node class for linked list'
-  def __init__(self,data :int,ptr :int) -> None:
-    self.data = data
-    self.ptr = ptr
-  #end procedure
-
-  def __repr__(self) -> str:
-      return f'(Data: {self.data}; Pointer: {self.ptr})'
-  #end function
-#end class
-
 class LinkedList:
   'Linked list class'
+  class Node:
+    'Nested Node class for linked list'
+    def __init__(self,data :int,ptr :int) -> None:
+      self.data = data
+      self.ptr = ptr
+    #end procedure
+
+    def __repr__(self) -> str:
+        return f'(Data: {self.data}; Pointer: {self.ptr})'
+    #end function
+  #end class
+
+
+
   def __init__(self,size) -> None:
     self.sp = -1
     self.nf = 0
-    self.container = [Node(None,-1)]
+    self.container = [self.Node(None,-1)]
     while size > 1:
-      self.container.insert(0,Node(None,size-1))
+      self.container.insert(0,self.Node(None,size-1))
       size -= 1
     #end while
   #end procedure (constructor)
@@ -39,7 +38,7 @@ class LinkedList:
       else: #search list
         cur_ptr = self.sp
         if item < self.container[cur_ptr].data: #insert at front
-          self.container[self.nf-
+         # self.container[self.nf-
           self.sp = self.nf  
         else:
           found = False
