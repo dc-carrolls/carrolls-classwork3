@@ -13,13 +13,13 @@ running = [False]
 x_pos = 0
 
 def task(id):
-  print(x:=randint(1,10))
-  sleep(x)
+  # print(x:=randint(1,10))
+  # sleep(x)
   
-  # x = 0
-  # while x < 100000000:
-  #   x += 1
-  # print('finished',x)
+  x = 0
+  while x < 100000000:
+    x += 1
+  print('finished',x)
   id[0] =False
 
 
