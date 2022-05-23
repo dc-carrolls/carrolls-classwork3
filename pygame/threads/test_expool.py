@@ -1,8 +1,6 @@
 import concurrent.futures
 import pygame
-from time import sleep
-from random import randint
- 
+#from time import sleep
 
 def task(limit): 
   print('start task') 
@@ -13,11 +11,8 @@ def task(limit):
   return "result"
 
 
-
-
-if __name__ == '__main__':
-
-# Define some colors
+def main():
+  # Define some colors
   BLACK = (0, 0, 0)
   WHITE = (255, 255, 255)
   GREEN = (0, 255, 0)
@@ -26,7 +21,7 @@ if __name__ == '__main__':
   run_task = True
   x_pos = 0
 
-  executor = concurrent.futures.ProcessPoolExecutor()
+  executor = concurrent.futures.ThreadPoolExecutor()
   pygame.init()
   
   # Set the width and height of the screen [width, height]
@@ -49,33 +44,23 @@ if __name__ == '__main__':
               done = True
   
       # --- Game logic should go here
-        
-
 
       if run_task:
         print('running')
         run_task = False
-        e = executor.submit(task,100000000)
-        x_pos = 0
+        e = executor.submit(task,50000000)       
       elif e.done():
+        x_pos = 0
         print(e.result())
         run_task=True 
         
       x_pos += 1
-
-
   
       # --- Screen-clearing code goes here
-  
-      # Here, we clear the screen to white. Don't put other drawing commands
-      # above this, or they will be erased with this command.
-  
-      # If you want a background image, replace this clear with blit'ing the
-      # background image.
       screen.fill(WHITE)
   
       # --- Drawing code should go here
-      pygame.draw.rect(screen, RED, [x_pos,100,10,10])  
+      pygame.draw.rect(screen, RED, [x_pos,100,30,30])  
 
       # --- Go ahead and update the screen with what we've drawn.
       pygame.display.flip()
@@ -85,5 +70,11 @@ if __name__ == '__main__':
   
   # Close the window and quit.
   pygame.quit()
+
+
+
+
+if __name__ == '__main__':
+  main()
 
 

@@ -1,0 +1,3 @@
+steve@test.com
+blah@gift.com
+Hello, SMTP World!

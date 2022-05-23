@@ -1,4 +1,3 @@
-from __future__ import print_function
 from datetime import datetime
 import asyncore
 from smtpd import SMTPServer
@@ -9,16 +8,17 @@ class EmlServer(SMTPServer):
         filename = 'mail%s-%d.txt' %(datetime.now().strftime('%Y%m%d%H%M%S'),self.no)
         f = open(filename, 'w')
         f.write(mailfrom+'\n')
-        f.write(rcpttos[0]+'\n')
+        for address in rcpttos:
+            f.write(address+'\n')
         f.write(data)
         f.close
         print('%s saved.' % filename)
         self.no += 1
 
 
-def run():
+def main():
     # start the smtp server on xxx.xxx.xxx.xxx:1025
-    foo = EmlServer(('10.0.7.37', 1025),('localhost', 1025), map=None, decode_data=True)
+    foo = EmlServer(('192.168.0.227', 1025),('localhost', 1025), map=None, decode_data=True)
     try:
         asyncore.loop()
     except KeyboardInterrupt:
@@ -26,4 +26,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    main()
