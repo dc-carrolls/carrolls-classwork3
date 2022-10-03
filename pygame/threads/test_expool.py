@@ -21,7 +21,7 @@ def main():
   run_task = True
   x_pos = 0
 
-  executor = concurrent.futures.ThreadPoolExecutor()
+  executor = concurrent.futures.ProcessPoolExecutor()
   pygame.init()
   
   # Set the width and height of the screen [width, height]

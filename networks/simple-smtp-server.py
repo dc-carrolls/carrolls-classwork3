@@ -18,7 +18,7 @@ class EmlServer(SMTPServer):
 
 def main():
     # start the smtp server on xxx.xxx.xxx.xxx:1025
-    foo = EmlServer(('192.168.0.227', 1025),('localhost', 1025), map=None, decode_data=True)
+    foo = EmlServer(('10.0.8.189', 1025),('localhost', 1025), map=None, decode_data=True)
     try:
         asyncore.loop()
     except KeyboardInterrupt:

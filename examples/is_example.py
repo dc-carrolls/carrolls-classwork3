@@ -6,10 +6,3 @@ while a is b:
   b = b - 1
 #end while
 
-a = '0123456789012345678901234567890'
-b = '0123456789012345678901234567890'
-while a is b:
-  print(a)
-  a = a + 'a'
-  b = b + 'a'
-#end while
