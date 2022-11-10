@@ -44,6 +44,9 @@ class Snow(pygame.sprite.Sprite):
   #End Procedure
 
   def update(self):
+    pass
+
+  
     
 #End Class
 
