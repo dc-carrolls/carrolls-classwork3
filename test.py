@@ -1,10 +1,8 @@
-x=[0]
-array=[]
-for _ in range(10):
-  array.append(x)
+print(
+'"If at first you don\'t succeed,'
+''' skydiving definitely isn't for you."
+- Steven Wright'''
+)
 
-
-print(array)
-array[3]=[1]
-array[0][0] = 2
-print(array)
+value = 3.1419
+print(f'Hello {value:.3f}')
