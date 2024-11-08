@@ -14,7 +14,7 @@ size = (640,480)
 canvas_size = (32*640,32*480)
 gravity = 1
 initial_y_velocity = -100
-initial_x_velocity = 110
+initial_x_velocity = -110
 
 screen = pygame.display.set_mode(size) 
 # -- Title of new window/screen 
@@ -23,7 +23,7 @@ pygame.display.set_caption("Mr Carroll's Game")
 done = False 
 # -- Manages how fast screen refreshes 
 clock = pygame.time.Clock()
-circle_x_pos = -40*32
+circle_x_pos = 680*32
 circle_y_pos = 150*32
 y_velocity = initial_y_velocity
 
@@ -36,8 +36,8 @@ while not done:
     #End If 
   #Next event 
   # -- Game logic goes after this comment 
-  if circle_x_pos > 680*32:
-    circle_x_pos = -40*32
+  if circle_x_pos < -40*32:
+    circle_x_pos = 680*32
     circle_y_pos = 180*32
     y_velocity = initial_y_velocity
   else:

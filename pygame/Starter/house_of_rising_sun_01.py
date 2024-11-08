@@ -18,7 +18,7 @@ pygame.display.set_caption("Mr Carroll's Game")
 done = False 
 # -- Manages how fast screen refreshes 
 clock = pygame.time.Clock()
-circle_x_pos = 39
+circle_x_pos = 640
 ### -- Game Loop 
 while not done: 
   # -- User input and controls 
@@ -28,10 +28,10 @@ while not done:
     #End If 
   #Next event 
   # -- Game logic goes after this comment 
-  if circle_x_pos > 680:
-    circle_x_pos = -40
+  if circle_x_pos < -40:
+    circle_x_pos = 680
   else:
-    circle_x_pos = circle_x_pos + 1
+    circle_x_pos = circle_x_pos - 1
   # end if
   # -- Screen background is BLACK 
   screen.fill (BLACK) 
